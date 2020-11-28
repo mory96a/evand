@@ -20,7 +20,9 @@ const MultiSelectFilter = ({placeHolder, filterOptions, filteredBy, filterName, 
         if (exist !== -1) {
             let newSelectedOptions = selectedOptions;
             newSelectedOptions.splice(exist, 1);
-            setSelected(newSelectedOptions);
+            setSelected([
+                ...newSelectedOptions
+            ]);
         } else {
             setSelected([
                 ...selectedOptions,
@@ -28,6 +30,7 @@ const MultiSelectFilter = ({placeHolder, filterOptions, filteredBy, filterName, 
             ]);
         }
     };
+
     useEffect(() => {
         filteredBy(selectedOptions, filterName);
     }, [selectedOptions]);

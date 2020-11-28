@@ -16,6 +16,7 @@ const Events = ({loadEvents, events, loadCities, cities, ...restProps}) => {
     const handleOptions = (options) => {
         setParams(options);
     };
+    
     console.log(queryParams);
 
     if (events.data) {
