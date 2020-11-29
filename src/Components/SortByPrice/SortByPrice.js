@@ -4,7 +4,7 @@ import { Button, Icon, Dropdown } from '../index';
 
 type Props = {};
 
-const   SortByPrice = ({prices, sortedBy, ...restProps}: Props) => {
+const SortByPrice = ({prices, sortedBy, ...restProps}: Props) => {
 
     const [show, setShow] = useState(false);
     const [selectedOption, setSelected] = useState({name: 'همه', value: ''});
@@ -29,6 +29,7 @@ const   SortByPrice = ({prices, sortedBy, ...restProps}: Props) => {
                 onClick={handleClick}
                 color={'black'}
                 className='d-flex flex-row-reverse justify-content-between w-100 px-2'
+                id='filter-button'
             >
                 <div className='d-flex flex-row-reverse justify-content-between align-items-center w-100 px-1'>
                     <Icon name='arrow-down' size={15}/><span className='ml-1'>قیمت :{selectedOption.name}</span>

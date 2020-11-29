@@ -25,7 +25,7 @@ const Button = ({name, children, ...restPros}: Props) => {
 Button.defaultProps = {
     paddingX: 10,
     paddingY: 5,
-    color: 'white'
+    color: 'black'
 };
 
 export default Button;

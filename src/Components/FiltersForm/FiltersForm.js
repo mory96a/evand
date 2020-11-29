@@ -1,38 +1,16 @@
 import React, { useState } from 'react';
 import StyledFiltersForm from "./FiltersForm.styles";
-import { Button, Icon, SortBy, MultiSelectFilter, SortByPrice } from '../index';
-import { optionsToQueryString } from '../../utils/functions';
+import { Button, Icon } from '../index';
+import Dropdown from "../Kit/DropdownRf/Dropdown";
+
 import data from './data';
 
 type FiltersFormProps = {};
 
 type Props = FiltersFormProps;
 
-const FiltersForm = ({takeOptions}: Props) => {
+const FiltersForm = ({takeOptions, handleCheck}: Props) => {
 
-    const [options, setOptions] = useState({
-        cities: '',
-        sort: '',
-        categories: '',
-        prices: '',
-        online: false
-    });
-
-    takeOptions(optionsToQueryString(options));
-
-    const handleSortBy = (option, sortName) => {
-        setOptions({
-            ...options,
-            [sortName]: option
-        });
-    };
-
-    const handleFilteredBy = (filters, filterName) => {
-        setOptions({
-            ...options,
-            [filterName]: filters
-        });
-    };
     return (
         <StyledFiltersForm>
             <div className='container'>
@@ -54,33 +32,66 @@ const FiltersForm = ({takeOptions}: Props) => {
                     </div>
                     <div className='d-flex align-items-center col-12 col-md-6 col-lg-4 col-xl-4 my-2'>
                         <span className='ml-3'>نوع مرتب سازی</span>
-                        <SortBy sorts={data.sorts} sortedBy={handleSortBy}/>
+                        <Dropdown
+                            className='sort-by my-2 px-0'
+                            iconName='arrow-down'
+                            dropdownList={data.sorts}
+                            selectAble={true}
+                            multiSelect={false}
+                            buttonBackground={'lightGray'}
+                            buttonClassName='px-2'
+                            takeValues={(filters) => {
+                                takeOptions(filters, 'sort');
+                            }}
+                        />
                     </div>
                     <div className='d-flex align-items-center col-12 col-md-6 col-lg-2 col-xl-2 my-2'>
-                        <input type="checkbox"/>
+                        <input type="checkbox" onChange={(event) => {
+                            handleCheck(event)
+                        }}/>
                         <span className='mx-1'>رویداد های آنلاین</span>
                     </div>
                 </div>
                 <div className="row">
                     <div className='d-flex align-items-center col-12 col-sm-3 my-2 col-md-2'>نوع فیلتر</div>
-                    <MultiSelectFilter
+                    <Dropdown
                         className='d-flex align-items-center col-12 col-sm-6 col-md-3 my-2 px-0'
-                        placeHolder='انتخاب شهر'
-                        filterOptions={data.cities}
-                        filteredBy={handleFilteredBy}
-                        filterName='cities'
+                        buttonName='انتخاب شهر'
+                        iconName='arrow-down'
+                        dropdownList={data.cities}
+                        selectAble={true}
+                        multiSelect={true}
+                        buttonBackground={'lightGray'}
+                        buttonClassName='px-2'
+                        takeValues={(filters) => {
+                            takeOptions(filters, 'cities');
+                        }}
                     />
-                    <MultiSelectFilter
-                        className='d-flex align-items-center col-12 col-sm-5 col-md-3 my-2 px-0 mx-sm-auto col-md-3'
-                        placeHolder='موضوع'
-                        filterOptions={data.categories}
-                        filteredBy={handleFilteredBy}
-                        filterName='categories'
+                    <Dropdown
+                        className='d-flex align-items-center col-12 col-sm-5 col-md-3 my-2 px-0 mx-sm-auto'
+                        buttonName='انتخاب موضوع'
+                        iconName='arrow-down'
+                        dropdownList={data.categories}
+                        selectAble={true}
+                        multiSelect={true}
+                        buttonBackground={'lightGray'}
+                        buttonClassName='px-2'
+                        takeValues={(filters) => {
+                            takeOptions(filters, 'categories');
+                        }}
                     />
-                    <SortByPrice
-                        className='d-flex align-items-center col-12 col-sm-5 col-md-3 my-2 px-0 mx-sm-auto col-md-3'
-                        prices={data.prices}
-                        sortedBy={handleSortBy}
+                    <Dropdown
+                        className='d-flex col-12 col-sm-5 col-md-3 my-2 px-0 mx-sm-auto'
+                        buttonName='قیمت'
+                        iconName='arrow-down'
+                        dropdownList={data.price}
+                        selectAble={true}
+                        multiSelect={false}
+                        buttonBackground={'lightGray'}
+                        buttonClassName='px-2'
+                        takeValues={(filters) => {
+                            takeOptions(filters, 'price');
+                        }}
                     />
                     <div className='d-flex align-items-center col-12 my-2'>جستجوی پیشرفته</div>
                 </div>

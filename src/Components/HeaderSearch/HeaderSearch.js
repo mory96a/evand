@@ -18,13 +18,6 @@ const HeaderSearch = () => {
             setHidden(false);
         }
     };
-    document.addEventListener('click', event => {
-        const {nodeName} = event.target;
-        if (nodeName !== 'BUTTON') {
-            setHidden(true);
-        }
-    });
-
 
     const handleChange = (event) => {
         setValue(event.target.value);

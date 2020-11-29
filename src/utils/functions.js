@@ -1,5 +1,6 @@
 export const optionObjectToArray = (object) => {
     const objectArray = Object.entries(object);
+    console.log(objectArray)
     return objectArray.reduce((acc, curr) => {
         if (curr[1].length !== 0) {
             acc.push(`${curr[0]}=${curr[1]}`);

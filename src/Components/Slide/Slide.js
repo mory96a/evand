@@ -21,7 +21,7 @@ const Slide = ({event}: Props) => {
                     <Icon name='price-tag' size={15}/>
                     <span className='mr-2'>قیمت بلیت</span>
                 </div>
-                <Button className='align-self-end mt-4' height={50} width={110} background={'darkBlue'}>
+                <Button className='align-self-end mt-4' height={50} width={110} background={'darkBlue'} color={'white'}>
                     ثبت نام
                 </Button>
             </StyledDiv>

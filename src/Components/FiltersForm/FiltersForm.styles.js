@@ -16,6 +16,9 @@ const StyledFiltersForm = styled.div`
     }
   }
   
+  .sort-by{
+    width: 130px;
+  }
   Button {
     border:none;
   }

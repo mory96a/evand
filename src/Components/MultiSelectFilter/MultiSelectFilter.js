@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import StyledMultiSelectFilter from "./MultiSelectFilter.styles";
 import { Dropdown, Button, Icon } from '../index';
 
@@ -30,7 +30,6 @@ const MultiSelectFilter = ({placeHolder, filterOptions, filteredBy, filterName, 
             ]);
         }
     };
-
     useEffect(() => {
         filteredBy(selectedOptions, filterName);
     }, [selectedOptions]);
