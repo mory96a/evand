@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import StyledFiltersForm from "./FiltersForm.styles";
-import { Button, Icon } from '../index';
-import Dropdown from "../Kit/DropdownRf/Dropdown";
+import { Button, Icon, Dropdown } from '../index';
 
 import data from './data';
 

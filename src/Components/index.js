@@ -16,9 +16,7 @@ import Slide from "./Slide/Slide";
 import FiltersForm from "./FiltersForm/FiltersForm";
 import Errors from "./Errors/Errors";
 import UserProfile from "./UserProfile/UserProfile";
-import SortBy from './SortyBy/SortBy';
 import Dropdown from './Kit/Dropdown/Dropdown';
-import MultiSelectFilter from "./MultiSelectFilter/MultiSelectFilter";
 import SortByPrice from "./SortByPrice/SortByPrice";
 
 export {
@@ -40,8 +38,6 @@ export {
     FiltersForm,
     Errors,
     UserProfile,
-    SortBy,
     Dropdown,
-    MultiSelectFilter,
     SortByPrice
 };

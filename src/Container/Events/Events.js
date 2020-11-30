@@ -16,7 +16,8 @@ const Events = ({loadEvents, events, loadCities, cities}) => {
     });
 
     useEffect(() => {
-        console.log(optionsToQueryString(options));
+        const params = optionsToQueryString(options);
+        console.log(params);
         loadEvents();
     }, [options]);
 
@@ -26,7 +27,6 @@ const Events = ({loadEvents, events, loadCities, cities}) => {
             [filterName]: filters
         });
     };
-
     const handleCheck = (event) => {
     };
 
