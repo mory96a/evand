@@ -1,13 +1,13 @@
 const data = {
     sorts: [{
         name: 'زمان',
-        value: ''
+        value: 'nearest'
     }, {
         name: 'علاقه مندی',
         value: 'interest'
     }, {
         name: 'محبوب ترین',
-        value: 'favorite'
+        value: ''
     }],
 
     cities: [{

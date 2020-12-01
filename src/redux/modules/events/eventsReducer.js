@@ -5,7 +5,7 @@ export const LOAD_EVENTS = 'evand/events/LOAD_EVENTS';
 const LOAD_EVENTS_SUCCESS = 'evand/events/LOAD_EVENTS_SUCCESS';
 const LOAD_EVENTS_FAILURE = 'evand/events/LOAD_EVENTS_FAILURE';
 
-export const loadEvents = (options) => ({
+export const loadEvents = (options = '') => ({
     type: LOAD_EVENTS,
     payload: options
 });
@@ -55,14 +55,13 @@ const eventsReducer = (state = initialState, action = {}) => {
 
 export function* watchLoadEvents(action) {
     try {
-        const response = yield request('/events', {
+        const response = yield request(`/events${action.payload}`, {
             method: 'GET'
-        }, {
-            Authorization: action.payload
         });
         const events = yield response.json();
         yield put(loadEventsSuccess(events));
     } catch (error) {
+
         const payload = yield error.json();
         yield put(loadEventsFailure(payload));
     }

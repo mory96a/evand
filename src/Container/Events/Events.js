@@ -1,41 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import StyledEvents from "./Events.styles";
 import { connect } from 'react-redux';
+import { useHistory } from "react-router";
 import { loadEvents } from "../../redux/modules/events/eventsReducer";
 import { EventsSlider, FiltersForm } from '../../Components';
 import { loadCities } from "../../redux/modules/cities/cities";
-import { optionsToQueryString } from '../../utils/functions';
+import { parseQueryParams } from "../../utils/functions";
 
-const Events = ({loadEvents, events, loadCities, cities}) => {
+const Events = ({loadEvents, events, loadCities, cities, location}) => {
 
-    const [options, setOptions] = useState({
-        cities: '',
-        price: '',
-        sort: '',
-        categories: ''
-    });
+    let history = useHistory();
+    //const [options, setOptions] = useState('');
 
-    useEffect(() => {
-        const params = optionsToQueryString(options);
-        console.log(params);
-        loadEvents();
-    }, [options]);
+    // useEffect(() => {
+    //     loadEvents(location.search);
+    // }, [])
 
-    const handleFilteredBy = (filters, filterName) => {
-        setOptions({
-            ...options,
-            [filterName]: filters
-        });
-    };
-    const handleCheck = (event) => {
-    };
+    // useEffect(() => {
+    //     // const params = options.length ? ('?' + options) : '';
+    //     // history.replace(`/events${params}`);
+    // }, [options]);
+
+    // const handleTakeOptions = (options) => {
+    //     setOptions(options);
+    // };
 
     if (events.data) {
         const eventsSlider = events.data.slice(0, 3);
         return (
             <StyledEvents>
                 <EventsSlider events={eventsSlider}/>
-                <FiltersForm takeOptions={handleFilteredBy} handleCheck={handleCheck}/>
+                <FiltersForm  location={location}/>
             </StyledEvents>
         );
     } else {

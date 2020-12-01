@@ -1,14 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import StyledFiltersForm from "./FiltersForm.styles";
 import { Button, Icon, Dropdown } from '../index';
+import {
+    optionsToQueryString,
+    parseQueryParams,
+    createDefaultFiltersObject
+} from '../../utils/functions';
 
 import data from './data';
+import { useHistory } from "react-router";
 
 type FiltersFormProps = {};
 
 type Props = FiltersFormProps;
 
-const FiltersForm = ({takeOptions, handleCheck}: Props) => {
+const FiltersForm = ({handleCheck, takeOptions, location}: Props) => {
+
+    let history = useHistory();
+
+    const queryObject = parseQueryParams(location.search);
+    const defaultOptions = {
+        cities: queryObject.cities ? createDefaultFiltersObject(queryObject.cities, data.cities) : [],
+        categories: queryObject.categories ? createDefaultFiltersObject(queryObject.categories, data.categories) : [],
+        price: queryObject.price ? createDefaultFiltersObject(queryObject.price, data.price) : [{
+            name: 'همه',
+            value: ''
+        }],
+        sort: queryObject.sort ? createDefaultFiltersObject(queryObject.sort, data.sorts) : [{
+            name: 'محبوب ترین',
+            value: ''
+        }]
+    };
+
+    const [options, setOptions] = useState(defaultOptions);
+
+    const handleTakeValue = (filterName, filters) => {
+        setOptions({
+            ...options,
+            [filterName]: filters
+        });
+    };
+
+    useEffect(() => {
+        let optionsString = optionsToQueryString(options)
+        const params = optionsString.length ? ('?' + optionsString) : '';
+        history.replace(`/events${params}`);
+        //takeOptions(optionsToQueryString(options));
+    }, [options]);
 
     return (
         <StyledFiltersForm>
@@ -35,12 +73,12 @@ const FiltersForm = ({takeOptions, handleCheck}: Props) => {
                             className='sort-by my-2 px-0'
                             iconName='arrow-down'
                             dropdownList={data.sorts}
-                            selectAble={true}
                             multiSelect={false}
                             buttonBackground={'lightGray'}
                             buttonClassName='px-2'
+                            defaultSelected={options.sort}
                             takeValues={(filters) => {
-                                takeOptions(filters, 'sort');
+                                handleTakeValue('sort', filters)
                             }}
                         />
                     </div>
@@ -58,12 +96,12 @@ const FiltersForm = ({takeOptions, handleCheck}: Props) => {
                         buttonName='انتخاب شهر'
                         iconName='arrow-down'
                         dropdownList={data.cities}
-                        selectAble={true}
                         multiSelect={true}
                         buttonBackground={'lightGray'}
                         buttonClassName='px-2'
+                        defaultSelected={options.cities}
                         takeValues={(filters) => {
-                            takeOptions(filters, 'cities');
+                            handleTakeValue('cities', filters)
                         }}
                     />
                     <Dropdown
@@ -71,12 +109,12 @@ const FiltersForm = ({takeOptions, handleCheck}: Props) => {
                         buttonName='انتخاب موضوع'
                         iconName='arrow-down'
                         dropdownList={data.categories}
-                        selectAble={true}
                         multiSelect={true}
                         buttonBackground={'lightGray'}
                         buttonClassName='px-2'
+                        defaultSelected={options.categories}
                         takeValues={(filters) => {
-                            takeOptions(filters, 'categories');
+                            handleTakeValue('categories', filters)
                         }}
                     />
                     <Dropdown
@@ -84,12 +122,12 @@ const FiltersForm = ({takeOptions, handleCheck}: Props) => {
                         buttonName='قیمت'
                         iconName='arrow-down'
                         dropdownList={data.price}
-                        selectAble={true}
                         multiSelect={false}
                         buttonBackground={'lightGray'}
                         buttonClassName='px-2'
+                        defaultSelected={options.price}
                         takeValues={(filters) => {
-                            takeOptions(filters, 'price');
+                            handleTakeValue('price', filters)
                         }}
                     />
                     <div className='d-flex align-items-center col-12 my-2'>جستجوی پیشرفته</div>
