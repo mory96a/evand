@@ -5,7 +5,8 @@ type Props = {
     isanchor: boolean,
     children: Element,
     path: string,
-    className?: string
+    className?: string,
+    fontSize?: string | number
 };
 
 const Link = ({isanchor, children, path, className, ...restProps}: Props) => {
@@ -25,7 +26,8 @@ const Link = ({isanchor, children, path, className, ...restProps}: Props) => {
 
 Link.defaultProps = {
     isanchor: 1,
-    color: 'black'
+    color: 'black',
+    fontSize: 14
 };
 
 export default Link;

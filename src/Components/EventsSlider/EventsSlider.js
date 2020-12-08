@@ -10,6 +10,7 @@ type Props = {
 };
 
 const EventsSlider = ({events}: Props) => {
+
     const settings = {
         className: 'slick-slider',
         dots: true,
@@ -20,12 +21,15 @@ const EventsSlider = ({events}: Props) => {
         autoplay: true,
         autoplaySpeed: 2000,
     };
+
     return (
         <StyledEventsSlider>
             <Slider {...settings} >
-                {events.map((event, index) => (
-                    <Slide key={index} event={event}/>
-                ))}
+                {
+                    !!events && events.map((event, index) => (
+                        <Slide key={index} event={event}/>
+                    ))
+                }
             </Slider>
         </StyledEventsSlider>
     );

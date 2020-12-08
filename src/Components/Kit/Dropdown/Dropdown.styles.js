@@ -3,6 +3,14 @@ import { colors } from '../../../styleSheets/index';
 
 const StyledDropdown = styled.div`
   position:relative;
+  
+  transition: transform 0.5s ease;
+  
+  #rotate-icon {
+    transform: rotate(${props => props.isOpen ? 180 : 0}deg);
+    transition: transform 0.5s ease;
+  }
+  
   label {
     z-index: 2;
   }
@@ -17,14 +25,14 @@ export const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top:50px;
+  top:${props => props.top}px;
   right: 0;
   z-index: 1;
   border : 1px solid ${colors.darkBlue};
   background:${colors.white};
+  max-height: ${props => props.maxHeight}px;
   overflow: auto;
-  max-height: 265px;
-  min-width: 100%;
+  min-width: 100%
 `;
 
 export default StyledDropdown;

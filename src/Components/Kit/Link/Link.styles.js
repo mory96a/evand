@@ -4,7 +4,7 @@ import { colors } from '../../../styleSheets/'
 
 export const StyledLink = styled(Link)`
     text-decoration: none !important;
-    font-size: 15px;
+    font-size: ${props => props.fontSize}px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,6 +13,7 @@ export const StyledLink = styled(Link)`
 
 export const StyledAnchor = styled.a`
     text-decoration: none !important;
+    font-size: ${props => props.fontSize}px;
     display: flex;
     align-items: center;
     justify-content: center;

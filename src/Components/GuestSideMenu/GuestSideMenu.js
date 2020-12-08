@@ -1,25 +1,36 @@
 import React from 'react';
 import StyledGuestSideMenu from "./GuestSideMenu.styles";
-import { Link } from "../index";
+import { Link } from "../Kit";
 
-type Props = {};
-
-const GuestSideMenu = (props: Props) => {
+const GuestSideMenu = (props) => {
     return (
         <StyledGuestSideMenu {...props}>
-            <div className='w-100 border-bottom'>
-                <Link className='justify-content-end mr-3 my-3' isanchor={0} path='/signin'>
-                    <span>ورود</span>
+            <div className='d-flex flex-column align-items-start w-100 border-bottom'>
+                <Link className='mr-3 my-3' isanchor={0} path='/signin' fontSize={13}>
+                    ورود
                 </Link>
-                <Link className='justify-content-end mr-3 mt-3 mb-4' isanchor={0} path='/signup'><span>عضویت</span></Link>
+                <Link className='mr-3 mt-3 mb-4' isanchor={0} path='/signup' fontSize={13}>
+                    عضویت
+                </Link>
             </div>
-            <Link className='justify-content-end mr-3 mt-4 mb-3' isanchor={0}
-                  path=''><span>ایجاد رویداد آنلاین(وبینار)</span></Link>
-            <Link className='justify-content-end mr-3 my-3' isanchor={0} path=''><span>ایجاد رویداد حضوری</span></Link>
-            <Link className='justify-content-end mr-3 my-3' isanchor={0} path='/events'><span>رویداد ها</span></Link>
-            <Link className='justify-content-end mr-3 my-3' isanchor={0} path=''><span>برگزارکندده ها</span></Link>
-            <Link className='justify-content-end mr-3 my-3' isanchor={0} path=''><span>راهنما</span></Link>
-            <Link className='justify-content-end mr-3 my-3' isanchor={0} path=''><span>دریافت سریع بلیت</span></Link>
+            <Link className='mr-3 mt-4 mb-3' isanchor={0} path='' fontSize={13}>
+                ایجاد رویداد آنلاین(وبینار)
+            </Link>
+            <Link className='mr-3 my-3' isanchor={0} path='' fontSize={13}>
+                ایجاد رویداد حضوری
+            </Link>
+            <Link className='mr-3 my-3' isanchor={0} path='/events' fontSize={13}>
+                رویداد ها
+            </Link>
+            <Link className='mr-3 my-3' isanchor={0} path='' fontSize={13}>
+                برگزارکندده ها
+            </Link>
+            <Link className='mr-3 my-3' isanchor={0} path='' fontSize={13}>
+                راهنما
+            </Link>
+            <Link className='mr-3 my-3' isanchor={0} path='' fontSize={13}>
+                دریافت سریع بلیت
+            </Link>
         </StyledGuestSideMenu>
     );
 };

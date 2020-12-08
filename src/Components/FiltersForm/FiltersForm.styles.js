@@ -7,7 +7,6 @@ const StyledFiltersForm = styled.div`
   border-top: 5px solid ${colors.darkBlue};
   width: 100%;
   padding: 25px;
-  direction: rtl;
   font-size: 14px;
 
   #search-box {

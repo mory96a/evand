@@ -1,0 +1,171 @@
+export const slideEvents = [{
+    id: 10604672,
+    city_id: 0,
+    organization_id: "v38qz",
+    organization: {
+        id: "v38qz",
+        name: "آکادمی علی‌بابا",
+        slug: "آکادمی-علی-بابا-4796666",
+        logo: {
+            original: "https://static.evand.net/images/organizations/logos/original/d15f21bd764b36154fc6b2e0fab44ea0.jpg",
+            thumbnails: []
+        }
+    },
+    type_id: 14,
+    category_id: 206,
+    name: "Alibaba Talk | Agile HR",
+    slug: "alibaba-talk-agile-hr-0212978",
+    start_date: "2020-12-09T17:00:00+0330",
+    end_date: "2020-12-09T19:00:00+0330",
+    cover: {
+        original: "https://static.evand.net/images/events/covers/original/fce2f95b915057ce510263831e543a3a.jpg",
+        thumbnails: [],
+        name: "fce2f95b915057ce510263831e543a3a.jpg"
+    },
+    website: null,
+    address: null,
+    latitude: 0,
+    longitude: 0,
+    status: "accepted",
+    private: "no",
+    email_description: null,
+    socials: null,
+    hashtag: null,
+    ticket_notification: "yes",
+    ticket_notification_emails: null,
+    request_deposit: "no",
+    online: "yes",
+    is_webinar_capacity_ended: false,
+    webinar_type: "personal",
+    refund_policy: "ماده۱: استرداد بلیت تنها تا ۷۲ ساعت قبل از شروع رویداد امکان پذیر میباشد. در صورت درخواست شرکت‌کننده بعد از بازه تعیین شده، برگزارکننده درخواست را به صورت موردی بررسی خواهد کرد و نتیجه را تا ۳ روز کاری اعلام میکند. ماده ۲: در صورتی که رویداد کنسل شود، برگزار کننده موظف است که مبلغ کامل را به شرکت کنندگان عودت دهد.",
+    ticket_type: "general_admission",
+    show_remaining_ticket: "no",
+    published: "yes",
+    cash_commission: 1250,
+    percent_commission: 4,
+    ended: false,
+    soldout: false,
+    timing_status: "future",
+    tickets_count: 0,
+    tickets_sold_count: 0,
+    total_checkins: 0,
+    total_unique_checkins: 0,
+    total_attendees: 0,
+    total_unique_connect_app_attendees: 0,
+    total_paid_attendees_with_certificate: null,
+    total_cancelled_attendees: 0,
+    notified_followers: "yes",
+    is_liked: false,
+    is_free: true,
+    user_role: null,
+    deprecated: false,
+    unpublishing_requested: "no",
+    duration: {
+        hours: 2
+    },
+    seating_hall_id: null,
+    cancelled: false,
+    is_using_showtime: false,
+    has_connect: true,
+    is_user_special_event: false,
+    is_trended_event: false,
+    updated_at: "2020-12-01T13:19:44+0330",
+    created_at: "2020-12-01T11:23:35+0330",
+    _links: {
+        self: {
+            href: "/events/alibaba-talk-agile-hr-0212978"
+        },
+        certificate: null,
+        seating_hall: null,
+        cancel_event: {
+            verb: "post",
+            uri: "/events/alibaba-talk-agile-hr-0212978/cancellation"
+        },
+        user_ticket: null
+    }
+}, {
+    id: 10602240,
+    city_id: 45,
+    organization_id: "vwp0",
+    organization: {
+        id: "vwp0",
+        name: "گروه آموزشی کسب و کار پلاس",
+        slug: "plus",
+        logo: {
+            original: "https://static.evand.net/images/organizations/logos/original/56f4eeda4cb2f392c27c4e71705b1d05.jpg",
+            thumbnails: []
+        }
+    },
+    type_id: 13,
+    category_id: 36,
+    name: "دوره تخصصی ارزهای دیجیتال",
+    slug: "دوره-تخصصی-ارزهای-دیجیتال-4",
+    start_date: "2020-10-24T17:00:00+0330",
+    end_date: "2020-12-12T20:00:00+0330",
+    cover: {
+        original: "https://static.evand.net/images/events/covers/original/b488c2090878727dfb44a6403c10afdb.jpg",
+        thumbnails: [],
+        name: "b488c2090878727dfb44a6403c10afdb.jpg"
+    },
+    website: null,
+    address: "اصفهان - خیابان وحید - خیابان رودکی - نرسیده به خیابان علامه جعفری - پلاک 118",
+    latitude: 32.62948883,
+    longitude: 51.63418413,
+    status: "accepted",
+    private: "no",
+    email_description: null,
+    socials: null,
+    hashtag: null,
+    ticket_notification: "yes",
+    ticket_notification_emails: null,
+    request_deposit: "no",
+    online: "no",
+    is_webinar_capacity_ended: false,
+    webinar_type: null,
+    refund_policy: "ماده۱: استرداد بلیت تنها تا ۷۲ ساعت قبل از شروع رویداد امکان پذیر میباشد. در صورت درخواست شرکت‌کننده بعد از بازه تعیین شده، برگزارکننده درخواست را به صورت موردی بررسی خواهد کرد و نتیجه را تا ۳ روز کاری اعلام میکند. ماده ۲: در صورتی که رویداد کنسل شود، برگزار کننده موظف است که مبلغ کامل را به شرکت کنندگان عودت دهد.",
+    ticket_type: "general_admission",
+    show_remaining_ticket: "no",
+    published: "yes",
+    cash_commission: 1250,
+    percent_commission: 4,
+    ended: false,
+    soldout: false,
+    timing_status: "live",
+    tickets_count: 0,
+    tickets_sold_count: 0,
+    total_checkins: 0,
+    total_unique_checkins: 0,
+    total_attendees: 0,
+    total_unique_connect_app_attendees: 0,
+    total_paid_attendees_with_certificate: null,
+    total_cancelled_attendees: 0,
+    notified_followers: "no",
+    is_liked: false,
+    is_free: false,
+    user_role: null,
+    deprecated: false,
+    unpublishing_requested: "no",
+    duration: {
+        hours: 1179
+    },
+    seating_hall_id: null,
+    cancelled: false,
+    is_using_showtime: false,
+    has_connect: true,
+    is_user_special_event: false,
+    is_trended_event: false,
+    updated_at: "2020-09-29T10:10:50+0330",
+    created_at: "2020-09-28T14:43:49+0330",
+    _links: {
+        self: {
+            href: "/events/دوره-تخصصی-ارزهای-دیجیتال-4"
+        },
+        certificate: null,
+        seating_hall: null,
+        cancel_event: {
+            verb: "post",
+            uri: "/events/دوره-تخصصی-ارزهای-دیجیتال-4/cancellation"
+        },
+        user_ticket: null
+    }
+}];

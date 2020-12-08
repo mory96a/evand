@@ -3,6 +3,7 @@ import StyledSignUp from "./SignUp.styles";
 import { Button, Input } from "../index";
 
 const SignUp = () => {
+
     const [user, setUser] = useState({email: '', password: '', name: '', confirmPassword: ''});
 
     function handleSubmit(event) {

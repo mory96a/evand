@@ -10,6 +10,7 @@ const StyledButton = styled.button`
     background:${props => colors[props.background]};
     color: ${props => colors[props.color]};
     padding: ${props => props.paddingX}px ${props => props.paddingY}px;
+    
     &:focus {
       outline: 0;
     }

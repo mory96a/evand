@@ -2,7 +2,7 @@ import Header from "./Layouts/Header/Header";
 import Button from "./Kit/Button/Button";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp/SignUp";
-import Input from "./Kit/Input/FormInput";
+import Input from "./Kit/Input/Input";
 import Link from "./Kit/Link/Link";
 import Icon from "./Kit/Icon/Icon";
 import HeaderSearch from "./HeaderSearch/HeaderSearch";
@@ -18,6 +18,10 @@ import Errors from "./Errors/Errors";
 import UserProfile from "./UserProfile/UserProfile";
 import Dropdown from './Kit/Dropdown/Dropdown';
 import SortByPrice from "./SortByPrice/SortByPrice";
+import SearchBox from "./Kit/SearchBox/SearchBox";
+import Form from "./Kit/Form/Form";
+import EventsWrapper from "./EventsWrapper/EventsWrapper";
+import EventsSection from "./EventsSection/EventsSection";
 
 export {
     Header,
@@ -39,5 +43,9 @@ export {
     Errors,
     UserProfile,
     Dropdown,
-    SortByPrice
+    SortByPrice,
+    SearchBox,
+    Form,
+    EventsWrapper,
+    EventsSection
 };

@@ -11,7 +11,6 @@ const StyledSideMenu = styled.div`
   
   transform: translateX(200px);
   transition: all 0.3s ease-out;
- 
 `;
 
 export default StyledSideMenu;

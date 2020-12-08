@@ -19,7 +19,6 @@ const SideMenu = ({user, logoutUser, ...restProps}: Props) => {
                     />
                 ) : null
             }
-
         </StyledSideMenu>
     );
 };

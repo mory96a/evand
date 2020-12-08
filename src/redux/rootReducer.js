@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import eventsReducer from './modules/events/eventsReducer';
 import usersReducer from "./modules/users/users";
 import errorsReducer from "./modules/errors/errors";

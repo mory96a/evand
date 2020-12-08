@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import StyledDropdown, { StyledContent } from "./Dropdown.styles";
 import { Button, Icon } from "../../index";
+import useClickOutSide from "../../Hooks/useClickOutSide";
 
 type Props = {
     className?: string,
@@ -12,9 +13,9 @@ type Props = {
     multiSelect: boolean,
     buttonBackground?: string,
     buttonColor?: string,
-    takeValues?: Function,
-    showSelectedInPlaceHolder?: boolean,
-    showNumberOfSelected?: boolean,
+    takeValues: Function,
+    top?: number | string,
+    maxHeight?: number | string
 };
 
 const Dropdown = ({buttonName, dropdownList, selectAble, multiSelect, ...restProps}: Props) => {
@@ -24,84 +25,41 @@ const Dropdown = ({buttonName, dropdownList, selectAble, multiSelect, ...restPro
         setShow(!show);
     };
 
-    const [selectedOptions, setSelected] = useState(restProps.defaultSelected);
-
-    useEffect(() => {
-        const values = selectedOptions.map((option) => {
-            return option
-        });
-        restProps.takeValues(values);
-    }, [selectedOptions]);
-
     const handleSelect = (selectedItem) => {
-        const exist = selectedOptions.findIndex((selected) => {
-            return selected.name === selectedItem.name;
-        });
-        if (exist !== -1) {         //exist
-            if (multiSelect) {
-                let newSelectedOptions = selectedOptions;
-                newSelectedOptions.splice(exist, 1);
-                setSelected([
-                    ...newSelectedOptions
-                ]);
-            }
-        } else {            //not exist
-            if (multiSelect) {
-                setSelected([
-                    ...selectedOptions,
-                    selectedItem
-                ]);
-            } else {
-                setSelected([selectedItem]);
-            }
-        }
+        restProps.takeValues(selectedItem);
     };
 
-    let shoSelectedItem = '';
-    if (multiSelect) {
-        shoSelectedItem = selectedOptions.length ? `: ${selectedOptions.length}` : null;
-    } else {
-        shoSelectedItem = !!selectedOptions[0].name.length ? `: ${selectedOptions[0].name}` : null;
-        if (!!!buttonName) {
-            shoSelectedItem = !!selectedOptions[0].name.length ? `${selectedOptions[0].name}` : null;
+    let buttonPlaceHolder;
+    if (!!buttonName) {
+        if (multiSelect) {
+            buttonPlaceHolder = <span>{buttonName} {!!restProps.defaultSelected.length && (': ' +  restProps.defaultSelected.length)}</span>
+        } else {
+            buttonPlaceHolder = <span>{buttonName}: {restProps.defaultSelected[0].name}</span>
         }
+    } else {
+        buttonPlaceHolder = <span>{restProps.defaultSelected[0].name}</span>
     }
 
-
-    let dropdownRef = useRef();
-    useEffect(() => {
-        let handler = (event) => {
-            if (!dropdownRef.current.contains(event.target)) {
-                setShow(false);
-            }
-        };
-        document.addEventListener('mousedown', handler);
-        return () => {
-            document.removeEventListener('mousedown', handler);
-        };
-    });
+    let dropdownRef = useClickOutSide(setShow);
 
     return (
-        <StyledDropdown className={restProps.className} ref={dropdownRef}>
+        <StyledDropdown className={restProps.className} ref={dropdownRef} isOpen={show}>
             <Button
-                onClick={handleClick}
-                className={`w-100 h-100 ${restProps.buttonClassName}`} color={restProps.buttonColor}
+                className={`${restProps.buttonClassName}`}
+                color={restProps.buttonColor}
                 background={restProps.buttonBackground}
+                onClick={handleClick}
             >
-                <div
-                    className={`d-flex ${!!restProps.iconName ? 'justify-content-between' : 'justify-content-center'} 
-                    align-items-center w-100 h-100`}
-                >
-                    {!!buttonName ? <span>{buttonName}{shoSelectedItem}</span> : <span>{shoSelectedItem}</span>}
-                    {!!restProps.iconName && <Icon name={restProps.iconName}/>}
-                </div>
+                <span>{buttonPlaceHolder}</span>
+                <Icon id='rotate-icon' name={restProps.iconName}/>
             </Button>
             {
                 show &&
-                <StyledContent>
+                <StyledContent className={restProps.contentClassName} top={restProps.top}
+                               maxHeight={restProps.maxHeight}>
                     {
                         dropdownList.map((item, index) => {
-                            const isChecked = !!selectedOptions.find((selectedOption) => {
+                            const isChecked = !!restProps.defaultSelected.find((selectedOption) => {
                                 return selectedOption.name === item.name;
                             });
                             return (
@@ -129,5 +87,12 @@ const Dropdown = ({buttonName, dropdownList, selectAble, multiSelect, ...restPro
     );
 };
 
+Dropdown.defaultProps = {
+    iconName: 'arrow-down',
+    top: 50,
+    maxHeight: 228
+};
+
 export default Dropdown;
+
 

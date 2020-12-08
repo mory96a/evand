@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledUserProfile from "./UserProfile.styles";
-import { Icon } from '../';
+import { Icon } from '../Kit';
 
 const UserProfile = ({user, ...restProps}) => {
     const {first_name, last_name} = user.data;

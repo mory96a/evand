@@ -17,7 +17,6 @@ const StyledHeaderSearch = styled.div`
   
   input {
     border: none;
-    direction: rtl;
     background:inherit;
     &:focus {
       outline: none;

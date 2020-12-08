@@ -3,11 +3,9 @@ import styled from 'styled-components';
 const StyledGuestSideMenu = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   padding: 20px 0;
-  
-  span {
-    font-size: 13px;
-  }
+  direction: rtl;
 `;
 
 export default StyledGuestSideMenu;

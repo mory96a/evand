@@ -7,8 +7,7 @@ import SignInSignUp from "../Container/SignInSignUp/SignInSignUp";
 import styled from 'styled-components';
 
 const Div = styled.div`
-  margin-top: 70px;
-  width: 100%;
+  margin-top:70px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +16,7 @@ const Div = styled.div`
 
 const Routes = () => {
     return (
-        <div className='w-100 vw-100'>
+        <div>
             <Header/>
             <Errors/>
             <Div>
@@ -29,8 +28,7 @@ const Routes = () => {
                 </Switch>
             </Div>
         </div>
-    )
-        ;
+    );
 };
 
 export default Routes;

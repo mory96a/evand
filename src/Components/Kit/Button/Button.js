@@ -14,7 +14,7 @@ type buttonProps = {
 
 type Props = buttonProps & Colors;
 
-const Button = ({name, children, ...restPros}: Props) => {
+const Button = ({children, ...restPros}: Props) => {
     return (
         <StyledButton {...restPros}>
             {children}
@@ -25,7 +25,7 @@ const Button = ({name, children, ...restPros}: Props) => {
 Button.defaultProps = {
     paddingX: 10,
     paddingY: 5,
-    color: 'black'
+    color: 'black',
 };
 
 export default Button;

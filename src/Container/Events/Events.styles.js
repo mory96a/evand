@@ -10,7 +10,7 @@ const StyledEvents = styled.div`
   width: 100%;
   
   @media(min-width: ${breakPoints.extraLarge}){
-    width: 1180px;
+    width: 1140px;
   }
   
   @media(min-width: ${breakPoints.medium}) and (max-width: ${breakPoints.extraLarge}){

@@ -28,7 +28,7 @@ const StyledHamburgerMenu = styled.div`
   @media(max-width: ${breakPoints.large}){
     display: flex;
     align-items: center;
-    input:checked ~ #side-menu {
+    #show-side-menu {
       transform: translateX(0);
       transition: all 0.3s ease-out;
     }

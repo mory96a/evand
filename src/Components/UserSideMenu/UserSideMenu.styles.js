@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const StyledUserSideMenu = styled.div`
-  direction: rtl;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

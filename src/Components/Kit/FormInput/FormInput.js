@@ -30,4 +30,3 @@ const Input = ({ type, name, value, label, handleChange, ...restProps }: Props) 
   );
 };
 
-export default Input;

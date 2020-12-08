@@ -1,2 +1,11 @@
+@font-face {
+    font-family: "sahel";
+    src: local("sahel"),
+    url('./styleSheets/fonts/sahel.ttf') format("truetype");
+}
 
-
+body {
+    min-height: 100vh;
+    direction: rtl;
+    font-family: sahel, serif !important;
+}
