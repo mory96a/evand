@@ -12,7 +12,8 @@ type Props = {
     height?: number | string,
     borderSize?: string | number,
     borderColor?: string,
-    onChange?: Function
+    onChange?: Function,
+    size: number | string,
 };
 
 const Input = ({onChange, value, ...restProps}: Props) => {
@@ -20,7 +21,9 @@ const Input = ({onChange, value, ...restProps}: Props) => {
     let inputRef = useRef();
 
     const handleInputChange = () => {
-        onChange(inputRef);
+        if(!!onChange){
+            onChange(inputRef);
+        }
     };
 
     return (
@@ -34,7 +37,8 @@ const Input = ({onChange, value, ...restProps}: Props) => {
 
 Input.defaultProps = {
     borderSize: 1,
-    borderColor: 'black'
+    borderColor: 'black',
+    size: 13
 };
 
 export default Input;

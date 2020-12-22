@@ -30,7 +30,7 @@ const Errors = ({errors, removeError}: Props) => {
                     <p key={index}>{error.message}.</p>
                 ))
             }
-            <Button width={50} height={30} background={'darkBlue'} onClick={handleClick}>
+            <Button color={'white'} width={50} height={30} background={'darkBlue'} onClick={handleClick}>
                 Hide
             </Button>
         </StyledErrors>

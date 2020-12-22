@@ -6,7 +6,8 @@ import Input from "./Input/Input";
 import Link from "./Link/Link";
 import SearchBox from "./SearchBox/SearchBox";
 import Text from "./Text/Text";
+import Modal from './Modal/Modal';
 
 export {
-    Button, Card, Dropdown, Input, Icon, Link, SearchBox, Text
+    Button, Card, Dropdown, Input, Icon, Link, SearchBox, Text, Modal
 };

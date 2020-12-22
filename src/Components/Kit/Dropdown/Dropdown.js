@@ -29,15 +29,20 @@ const Dropdown = ({buttonName, dropdownList, selectAble, multiSelect, ...restPro
         restProps.takeValues(selectedItem);
     };
 
+    const filteredDefaultValues = restProps.defaultSelected.filter((selected) => {
+        return selected.name !== 'unknown';
+    });
+
     let buttonPlaceHolder;
     if (!!buttonName) {
         if (multiSelect) {
-            buttonPlaceHolder = <span>{buttonName} {!!restProps.defaultSelected.length && (': ' +  restProps.defaultSelected.length)}</span>
+            buttonPlaceHolder =
+                <span>{buttonName} {!!filteredDefaultValues.length && (': ' + filteredDefaultValues.length)}</span>
         } else {
-            buttonPlaceHolder = <span>{buttonName}: {restProps.defaultSelected[0].name}</span>
+            buttonPlaceHolder = <span>{buttonName}: {filteredDefaultValues[0].name}</span>
         }
     } else {
-        buttonPlaceHolder = <span>{restProps.defaultSelected[0].name}</span>
+        buttonPlaceHolder = <span>{filteredDefaultValues[0].name}</span>
     }
 
     let dropdownRef = useClickOutSide(setShow);
@@ -59,7 +64,7 @@ const Dropdown = ({buttonName, dropdownList, selectAble, multiSelect, ...restPro
                                maxHeight={restProps.maxHeight}>
                     {
                         dropdownList.map((item, index) => {
-                            const isChecked = !!restProps.defaultSelected.find((selectedOption) => {
+                            const isChecked = !!filteredDefaultValues.find((selectedOption) => {
                                 return selectedOption.name === item.name;
                             });
                             return (

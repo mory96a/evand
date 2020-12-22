@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router";
 import StyledFiltersForm from "./FiltersForm.styles";
-import { Dropdown, Form, Input } from '../index';
+import { Dropdown, Form, Input, SelectedParamsList } from '../index';
 import {
     optionsToQueryString,
     parseQueryParams,
-    createDefaultFiltersObject
+    createOptionsFromUrl
 } from '../../utils/functions';
 
 import data from './data';
@@ -14,30 +14,20 @@ type FiltersFormProps = {};
 
 type Props = FiltersFormProps;
 
-const FiltersForm = ({handleCheck, takeOptions, location}: Props) => {
+const FiltersForm = ({handleCheck, takeOptions, eventsCount, location}: Props) => {
 
     let history = useHistory();
 
     const queryObject = parseQueryParams(location.search);
-
-    const defaultOptions = {
-        cities: createDefaultFiltersObject(queryObject.cities, data.cities, []),
-        categories: createDefaultFiltersObject(queryObject.categories, data.categories, []),
-        price: createDefaultFiltersObject(queryObject.price, data.price, [{
-            name: 'همه',
-            value: ''
-        }]),
-        sort: createDefaultFiltersObject(queryObject.sort, data.sorts, [{
-            name: 'محبوب ترین',
-            value: ''
-        }]),
-        online: (!!queryObject.online && queryObject.online[0] === 'yes') ? [{
-            name: 'online',
-            value: 'yes'
-        }] : [{name: 'online', value: ''}]
-    };
-
-    const [options, setOptions] = useState(defaultOptions);
+   
+    const [options, setOptions] = useState({
+        cities: [],
+        categories: [],
+        price: [{name: 'همه', value: ''}],
+        sort: [{name: 'محبوب ترین', value: ''}],
+        online: [{name: 'online', value: ''}],
+        ...createOptionsFromUrl(queryObject, data)
+    });
 
     const handleTakeValue = (filterName, selectedItem, isMulti) => {
         const exist = options[filterName].findIndex((selected) => {
@@ -72,7 +62,7 @@ const FiltersForm = ({handleCheck, takeOptions, location}: Props) => {
         const defaultParams = optionsString.length ? '&per_page=12' : '?per_page=12';
         const params = optionsString.length ? ('?' + optionsString) : '';
         history.replace(`/events${params}`);
-        takeOptions(params + defaultParams);
+        takeOptions(params, defaultParams);
     }, [options]);
 
     const handleSubmitSearch = (value) => {
@@ -88,6 +78,14 @@ const FiltersForm = ({handleCheck, takeOptions, location}: Props) => {
                 value: isChecked
             }]
         });
+    };
+
+    const handleRemoveSelectedOption = (newOptions) => {
+        // console.log(newOptions);
+        // setOptions({
+        //     ...options,
+        //     [foundedKey]: newOptions
+        // });
     };
 
     return (
@@ -120,9 +118,9 @@ const FiltersForm = ({handleCheck, takeOptions, location}: Props) => {
                         <Dropdown
                             className='sort-by my-2 px-0'
                             iconName='arrow-down'
-                            dropdownList={data.sorts}
+                            dropdownList={data.sort}
                             multiSelect={false}
-                            buttonBackground={'lightGray'}
+                            buttonBackground={'lighterGray'}
                             buttonClassName='d-flex align-items-center justify-content-between w-100 h-100 px-2'
                             defaultSelected={options.sort}
                             takeValues={(selectedItem) => {
@@ -144,14 +142,16 @@ const FiltersForm = ({handleCheck, takeOptions, location}: Props) => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className='d-flex align-items-center col-12 col-sm-3 my-2 col-md-2'>نوع فیلتر</div>
+                    <div id='filter-type-span'
+                         className='d-flex align-items-center col-12 col-sm-3 my-2 col-md-2 col-lg-2 mx-lg-2'>نوع فیلتر
+                    </div>
                     <Dropdown
-                        className='d-flex align-items-center col-12 col-sm-6 col-md-3 my-2 px-0'
+                        className='d-flex align-items-center col-12 col-sm-6 col-md-3 my-2 px-0 col-lg-2 mx-lg-2'
                         buttonName='انتخاب شهر'
                         iconName='arrow-down'
                         dropdownList={data.cities}
                         multiSelect={true}
-                        buttonBackground={'lightGray'}
+                        buttonBackground={'lighterGray'}
                         buttonClassName='d-flex align-items-center justify-content-between w-100 h-100 px-2'
                         defaultSelected={options.cities}
                         takeValues={(selectedItem) => {
@@ -159,12 +159,12 @@ const FiltersForm = ({handleCheck, takeOptions, location}: Props) => {
                         }}
                     />
                     <Dropdown
-                        className='d-flex align-items-center col-12 col-sm-5 col-md-3 my-2 px-0 mx-sm-auto'
+                        className='d-flex align-items-center col-12 col-sm-5 col-md-3 my-2 px-0 mx-sm-auto col-lg-2 mx-lg-2'
                         buttonName='انتخاب موضوع'
                         iconName='arrow-down'
                         dropdownList={data.categories}
                         multiSelect={true}
-                        buttonBackground={'lightGray'}
+                        buttonBackground={'lighterGray'}
                         buttonClassName='d-flex align-items-center justify-content-between w-100 h-100 px-2'
                         defaultSelected={options.categories}
                         takeValues={(selectedItem) => {
@@ -172,21 +172,26 @@ const FiltersForm = ({handleCheck, takeOptions, location}: Props) => {
                         }}
                     />
                     <Dropdown
-                        className='d-flex col-12 col-sm-5 col-md-3 my-2 px-0 mx-sm-auto'
+                        className='d-flex col-12 col-sm-5 col-md-3 my-2 px-0 mx-sm-auto col-lg-2 mx-lg-2'
                         buttonName='قیمت'
                         iconName='arrow-down'
                         dropdownList={data.price}
                         multiSelect={false}
-                        buttonBackground={'lightGray'}
+                        buttonBackground={'lighterGray'}
                         buttonClassName='d-flex align-items-center justify-content-between w-100 h-100 px-2'
                         defaultSelected={options.price}
                         takeValues={(selectedItem) => {
                             handleTakeValue('price', selectedItem, false)
                         }}
                     />
-                    <div className='d-flex align-items-center col-12 my-2'>جستجوی پیشرفته</div>
+                    <div className='d-flex align-items-center col-12 my-2 col-lg-2 mx-lg-2'>جستجوی پیشرفته</div>
                 </div>
             </div>
+            <SelectedParamsList
+                options={options}
+                eventsCount={eventsCount}
+                handleRemoveSelectedOption={handleRemoveSelectedOption}
+            />
         </StyledFiltersForm>
     );
 };

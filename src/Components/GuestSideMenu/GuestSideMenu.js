@@ -6,10 +6,10 @@ const GuestSideMenu = (props) => {
     return (
         <StyledGuestSideMenu {...props}>
             <div className='d-flex flex-column align-items-start w-100 border-bottom'>
-                <Link className='mr-3 my-3' isanchor={0} path='/signin' fontSize={13}>
+                <Link className='mr-3 my-3' isanchor={0} path='/login-register' fontSize={13}>
                     ورود
                 </Link>
-                <Link className='mr-3 mt-3 mb-4' isanchor={0} path='/signup' fontSize={13}>
+                <Link className='mr-3 mt-3 mb-4' isanchor={0} path='/login-register' fontSize={13}>
                     عضویت
                 </Link>
             </div>

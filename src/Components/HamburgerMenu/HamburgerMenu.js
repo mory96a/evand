@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import StyledHamburgerMenu from "./HamburgerMenu.styles";
 import { SideMenu } from '../index';
 import { Button, Icon } from "../Kit";
+import useClickOutSide from "../Hooks/useClickOutSide";
 
 type Props = {
     user: Object,
@@ -16,8 +17,10 @@ const HamburgerMenu = ({user, logoutUser, ...restProps}: Props) => {
         setShow(!show);
     };
 
+    let dropdownRef = useClickOutSide(setShow);
+
     return (
-        <StyledHamburgerMenu {...restProps}>
+        <StyledHamburgerMenu {...restProps} ref={dropdownRef}>
             <Button className='w-100 h-100 border-0 bg-white' onClick={handleClick}>
                 <Icon id='icon' name='menu' size={30}/>
             </Button>

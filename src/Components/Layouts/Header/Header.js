@@ -4,12 +4,13 @@ import { logoutUser } from '../../../redux/modules/users/users';
 import StyledHeader from "./Header.styles";
 import { HeaderSearch, Navbar, HamburgerMenu } from "../../index";
 import { Text } from '../../Kit';
+import { loadModal } from "../../../redux/modules/authModal/modal";
 
-const Header = ({user, logoutUser}) => {
+const Header = ({user, logoutUser, loadAuthModal}) => {
     return (
         <StyledHeader>
             <HamburgerMenu id='hamburger-menu' user={user} logoutUser={logoutUser}/>
-            <Navbar id='navbar' className='mx-auto' user={user} logoutUser={logoutUser}/>
+            <Navbar id='navbar' className='mx-auto' user={user} logoutUser={logoutUser} loadAuthModal={loadAuthModal}/>
             <Text type='h1' id='header-h1'>EVAND</Text>
             <div className='d-flex align-items-center'>
                 <HeaderSearch/>
@@ -25,5 +26,5 @@ const mapStateToProp = (state) => ({
     user: state.user.user
 });
 
-export default connect(mapStateToProp, {logoutUser: logoutUser})(Header);
+export default connect(mapStateToProp, {logoutUser: logoutUser, loadAuthModal: loadModal})(Header);
 

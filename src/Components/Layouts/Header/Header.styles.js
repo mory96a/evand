@@ -7,7 +7,7 @@ const StyledHeader = styled.div`
     top: 0;
     left: 0;
     align-items: center;
-    height: 70px;
+    height: 60px;
     width: 100vw;
     background:${colors.white};
     box-shadow: 0 0 10px rgba(0,0,0,0.1);

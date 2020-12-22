@@ -6,10 +6,18 @@ const StyledEventsSection = styled.div`
   flex-direction: column;
   padding: 0;
   border : 2px solid rgba(0,0,0,0.1);
- 
+
   #logo-image {
      width: 32px;
      height: 32px;
+  }
+  
+  #section-content {
+    height: 53%;
+  }
+  
+  #cover {
+    height: 42%;
   }
 `;
 

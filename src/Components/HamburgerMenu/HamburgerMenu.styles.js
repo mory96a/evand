@@ -6,20 +6,9 @@ const StyledHamburgerMenu = styled.div`
   align-items: center;
   padding: 0 20px;
   height: 100%;
-  width: 70px;
+  width: 60px;
   margin: 0 10px;
   position:relative;
-  
-  input {
-    height: 70px;
-    width: 70px;
-    position:absolute;
-    top: 0;
-    right: 0;
-    opacity: 0;
-    z-index: 2;
-    cursor: pointer;
-  }
   
   #icon {
     z-index: 1;

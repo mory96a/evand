@@ -7,6 +7,11 @@ const StyledNavbar = styled.div`
   @media(max-width: ${breakPoints.large}){
     display: none;
   }
+  
+  #text {
+    z-index: 3;
+    cursor: pointer;
+  }
 `;
 
 export default StyledNavbar;

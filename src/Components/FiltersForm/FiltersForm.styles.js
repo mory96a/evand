@@ -6,13 +6,16 @@ const StyledFiltersForm = styled.div`
   border : 1px solid rgba(0,0,0,0.1);
   border-top: 5px solid ${colors.darkBlue};
   width: 100%;
-  padding: 25px;
   font-size: 14px;
 
   #search-box {
     input {
       height: 40px;
     }
+  }
+  
+  .container {
+    padding: 25px;
   }
   
   .sort-by{

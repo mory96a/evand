@@ -7,7 +7,6 @@ import { storeCreator } from "./redux/store";
 import moment from 'moment-jalaali';
 import './App.css';
 
-
 moment.loadPersian();
 
 const {store, persistor} = storeCreator();

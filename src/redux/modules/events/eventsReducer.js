@@ -61,7 +61,6 @@ export function* watchLoadEvents(action) {
         const events = yield response.json();
         yield put(loadEventsSuccess(events));
     } catch (error) {
-
         const payload = yield error.json();
         yield put(loadEventsFailure(payload));
     }

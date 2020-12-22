@@ -9,6 +9,11 @@ const StyledEvents = styled.div`
   margin-top: 30px;
   width: 100%;
   
+  #alert-signin-signup {
+    height: 90px;
+    border: 1px ${colors.lighterGray} solid;
+  }
+  
   @media(min-width: ${breakPoints.extraLarge}){
     width: 1140px;
   }

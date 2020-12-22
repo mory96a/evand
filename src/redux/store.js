@@ -22,5 +22,5 @@ export const storeCreator = () => {
     );
     store.rootTask = sagaMiddleware.run(sagas);
     const persistor = persistStore(store);
-    return {store, persistor}
+    return {store, persistor};
 };

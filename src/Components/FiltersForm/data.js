@@ -1,5 +1,5 @@
 const data = {
-    sorts: [{
+    sort: [{
         name: 'زمان',
         value: 'nearest'
     }, {

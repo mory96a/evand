@@ -5,7 +5,9 @@ import { GuestSideMenu, UserSideMenu } from '../index';
 type Props = {};
 
 const SideMenu = ({user, logoutUser, ...restProps}: Props) => {
+
     const userLoggedIn = !!user.data;
+
     return (
         <StyledSideMenu {...restProps} >
             <GuestSideMenu id='guest-side-menu' className={`d-${userLoggedIn && 'none'}`}/>

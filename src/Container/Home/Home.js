@@ -1,10 +1,11 @@
 import React from 'react';
+import StyledHome from "./Home.styles";
 
 const Home = () => {
     return (
-        <div>
-            hi
-        </div>
+        <StyledHome>
+            EVAND
+        </StyledHome>
     );
 };
 

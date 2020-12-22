@@ -17,11 +17,13 @@ import FiltersForm from "./FiltersForm/FiltersForm";
 import Errors from "./Errors/Errors";
 import UserProfile from "./UserProfile/UserProfile";
 import Dropdown from './Kit/Dropdown/Dropdown';
-import SortByPrice from "./SortByPrice/SortByPrice";
 import SearchBox from "./Kit/SearchBox/SearchBox";
 import Form from "./Kit/Form/Form";
 import EventsWrapper from "./EventsWrapper/EventsWrapper";
 import EventsSection from "./EventsSection/EventsSection";
+import SignInSignUpModal from "./SingInSignUpModal/SignInSignUp";
+import SignInSignUpAlert from "./SignInSignUpAlert/SignInSignUpAlert";
+import SelectedParamsList from "./SelectedParamsList/SelectedParamsList";
 
 export {
     Header,
@@ -43,9 +45,11 @@ export {
     Errors,
     UserProfile,
     Dropdown,
-    SortByPrice,
     SearchBox,
     Form,
     EventsWrapper,
-    EventsSection
+    EventsSection,
+    SignInSignUpModal,
+    SignInSignUpAlert,
+    SelectedParamsList
 };

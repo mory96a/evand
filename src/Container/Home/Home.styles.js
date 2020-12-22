@@ -1,6 +1,18 @@
 import styled from 'styled-components';
-import Button from "../../Components/Kit/Button/Button";
+import { breakPoints } from '../../styleSheets';
 
-const StyledButton = styled(Button)`
-
+const StyledHome = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  height: 60vh;
+  text-align: center;
+  
+  @media(max-width: ${breakPoints.medium}){
+    font-size: 60px;
+    height: 40vh;
+  }
 `;
+
+export default StyledHome;

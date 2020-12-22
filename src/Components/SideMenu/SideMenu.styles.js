@@ -5,7 +5,7 @@ const StyledSideMenu = styled.div`
   width: 200px;
   height: 100vh;
   position:absolute;
-  top : 70px;
+  top : 60px;
   right: -10px;
   background:${colors.white};
   
